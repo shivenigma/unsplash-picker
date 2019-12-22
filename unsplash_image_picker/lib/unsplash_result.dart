@@ -3,7 +3,7 @@ class ProfileImage {
   String medium;
   String large;
   ProfileImage({this.small, this.medium, this.large});
-  factory ProfileImage.fromJson(Map<String, String> json) {
+  factory ProfileImage.fromJson(Map<String, dynamic> json) {
     return ProfileImage(
       large: json['large'],
       small: json['small'],
@@ -83,11 +83,11 @@ class ImageUrls {
     this.thumb});
   factory ImageUrls.fromJson(Map<String, dynamic> json) {
     return ImageUrls(
-      raw: json['raw'] as String;
-      full: json['full'] as String;
-      regular: json['regular'] as String;
-      small: json['small'] as String;
-      thumb: json['thumb'] as String;
+      raw: json['raw'] as String,
+      full: json['full'] as String,
+      regular: json['regular'] as String,
+      small: json['small'] as String,
+      thumb: json['thumb'] as String,
     );
   }
 }

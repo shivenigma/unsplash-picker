@@ -5,7 +5,11 @@ import 'package:unsplash_image_picker/unsplash_result.dart';
 import 'package:http/http.dart' as http;
 
 Future<List<UnsplashResults>> fetchPhotos(http.Client client) async {
-  final response = await client.get('https://jsonbox.io/box_5e9c00b2fa5702ea39b7');
+  Map<String, String> headers = {
+    'Authorization': 'Client-ID 8e16e199e78d056d66a1f9ff249b8a4391482fcfef2833d56f76caf85a27a5b8'
+  };
+  final response = await client
+      .get('https://api.unsplash.com/photos?page=1', headers: headers);
   return compute(parseData, response.body);
 }
 

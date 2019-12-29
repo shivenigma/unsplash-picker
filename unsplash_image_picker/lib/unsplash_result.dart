@@ -38,6 +38,7 @@ class UnsplashUser {
   String instagram_username;
   String twitter_username;
   String portfolio_url;
+  String bio;
   ProfileImage profile_image;
   UserLinks links;
   UnsplashUser({
@@ -49,6 +50,7 @@ class UnsplashUser {
     this.instagram_username,
     this.twitter_username,
     this.portfolio_url,
+    this.bio,
     this.profile_image,
     this.links
   });
@@ -64,6 +66,7 @@ class UnsplashUser {
       instagram_username: json['instagram_username'] as String,
       twitter_username: json['twitter_username'] as String,
       portfolio_url: json['portfolio_url'] as String,
+      bio: json['bio'] as String,
       profile_image: profileImage,
       links: links
     );

@@ -54,8 +54,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisSpacing: 2,
                 children: List.generate(data.length, (index) {
                   var imageData = data[index];
-                  return Image.network(imageData.urls.thumb,
-                    fit: BoxFit.cover,
+                  return InkWell(
+                    child: Image.network(imageData.urls.thumb,
+                      fit: BoxFit.cover,
+                    ),
+                    onTap: () {
+                      _openImage(imageData);
+                    },
                   );
                 }));
           }
@@ -66,4 +71,38 @@ class _MyHomePageState extends State<MyHomePage> {
       )
     );
   }
+  Future<void> _openImage(UnsplashResults image) async {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: SingleChildScrollView(
+            child: Card(
+              child: Column(
+                children: <Widget>[
+                  Image.network(image.urls.regular),
+                  ListTile(
+                    title: Text(image.user.first_name),
+                    subtitle: Text(image.user.bio != null ? image.user.bio : ''),
+                  )
+                ],
+              ),
+            )
+          ),
+          actions: <Widget>[
+            RaisedButton(
+              child: Text('Select', style: TextStyle(
+                color: Colors.white
+              ),),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
+
+
